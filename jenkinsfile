@@ -1,4 +1,6 @@
 def registry = 'https://valaxy092.jfrog.io/' ##add this at the top of the pipeline
+def imageName = 'valaxy092.jfrog.io/valaxy-docker-local/ttrend'
+def version   = '2.1.2'
 pipeline {
     agent {
         node {
@@ -47,6 +49,15 @@ environment {
                      echo '<--------------- Jar Publish Ended --------------->'  
              }
         }   
+    }
+    stage(" Docker Build ") {
+      steps {
+        script {
+           echo '<--------------- Docker Build Started --------------->'
+           app = docker.build(imageName+":"+version)
+           echo '<--------------- Docker Build Ends --------------->'
+        }
+      }
     }
 }
 }
