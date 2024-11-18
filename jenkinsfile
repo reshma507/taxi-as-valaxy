@@ -34,7 +34,7 @@ environment {
                           "files": [
                             {
                               "pattern": "jarstaging/(*)",
-                              "target": "taxi-libs-release-local/{1}",
+                              "target": "/home/ubuntu/jenkins/workspace/tweet-trend/taxi-booking/target/(*)",
                               "flat": "false",
                               "props" : "${properties}",
                               "exclusions": [ "*.sha1", "*.md5"]
