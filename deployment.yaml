@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valaxy-rtp
+  namespace: valaxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  valaxy-rtp
+  template:
+    metadata:
+      labels:
+        app:  valaxy-rtp
+    spec:
+      imagePullSecrets:
+      - name: jfrogcred
+      containers:
+      - name:  valaxy-rtp
+        image: valaxy092.jfrog.io/taxiasvalaxy-docker-local/app
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        
